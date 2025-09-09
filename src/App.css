@@ -1,0 +1,136 @@
+.App {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 40px 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 5px solid #61dafb;
+}
+
+h1 {
+  font-size: 2.8em;
+  margin-bottom: 10px;
+}
+
+.App-header p {
+  font-size: 1.2em;
+  opacity: 0.8;
+}
+
+.App-section {
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  border-bottom: 1px solid #eee;
+}
+
+.App-section:last-child {
+  border-bottom: none;
+}
+
+h2 {
+  font-size: 2.2em;
+  color: #282c34;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 3px;
+  background-color: #61dafb;
+  left: 20%;
+  bottom: -10px;
+}
+
+.experience-item, .project-item {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.experience-item h3, .project-item h3 {
+  color: #61dafb;
+  margin-bottom: 5px;
+}
+
+.experience-item p, .project-item p {
+  font-style: italic;
+  color: #555;
+}
+
+.experience-item ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 0;
+}
+
+.experience-item li {
+  margin-bottom: 5px;
+}
+
+.skills-category {
+  margin-bottom: 20px;
+}
+
+.skills-category h3 {
+  color: #282c34;
+  margin-bottom: 10px;
+}
+
+.skills-category ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.skills-category li {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.project-item a {
+  display: inline-block;
+  background-color: #61dafb;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.project-item a:hover {
+  background-color: #4fa3d1;
+}
+
+.App-footer {
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+  font-size: 0.9em;
+}
