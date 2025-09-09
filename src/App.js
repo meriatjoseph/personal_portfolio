@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import profileImage from './profile.jpg'; // Assuming the image is in src folder
+import profileImage from './profile.jpg';
 
 function App() {
   return (
