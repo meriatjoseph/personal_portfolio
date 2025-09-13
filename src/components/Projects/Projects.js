@@ -14,11 +14,12 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "Natural Language Processing Toolkit",
-      description: "A comprehensive NLP toolkit for text analysis, sentiment classification, and named entity recognition using transformer models.",
-      technologies: ["Python", "PyTorch", "Hugging Face"],
-      demoLink: "#",
-      sourceLink: "#"
+      title: "Amazon Customer Review Sentiment Prediction System",
+      description: "The Amazon Customer Review Sentiment Prediction System is an AI-driven solution that predicts the sentiment (positive, negative, or neutral) of customer reviews. It empowers users to input review text, receive real-time predictions, and submit feedback to enhance future model performance. The system incorporates model monitoring and data drift detection to ensure sustained accuracy, enabling planned retraining with accumulated feedback for long-term improvement.<br/><br/>• Designed and developed a sentiment prediction model using LSTM-based deep learning, enhanced by NLP techniques such as TF-IDF and lemmatization for robust text processing<br/>• Implemented MLOps tools, MLflow and Evidently, to track model performance, compare experiments, and visually analyze data drift for proactive model maintenance<br/>• Built RESTful APIs using FastAPI to handle prediction responses, feedback submission, and data drift visualization, paired with an intuitive web interface for user interaction<br/>• Deployed the application on Google Cloud Platform (GCP) using App Engine, integrated with Cloud Storage for storing user feedback and drift reports, all within a Dockerized container for scalability and consistency",
+      technologies: ["Python", "FastAPI", "Docker", "Google Cloud Platform (GCP)", "NLTK", "LSTM", "Evidently", "MLflow", "RESTful API", "HTML", "CSS", "JavaScript"],
+      demoLink: "https://amazon-app1-dot-amazon-sentiment-analysis1.el.r.appspot.com/",
+      sourceLink: "https://github.com/mhdnihas/Amazon-Customer-Review-Sentiment-and-Monitoring-MLOps",
+      image: "/amazon-sentiment-analysis.jpg"
     },
     {
       id: 3,
