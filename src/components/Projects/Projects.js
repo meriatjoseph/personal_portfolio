@@ -42,6 +42,7 @@ const Projects = () => {
   ];
 
   const [currentPage, setCurrentPage] = useState(0);
+  const [expandedProjects, setExpandedProjects] = useState({});
   const projectsPerPage = 3;
   
   // Calculate total pages
@@ -63,6 +64,31 @@ const Projects = () => {
   
   const goToPage = (pageIndex) => {
     setCurrentPage(pageIndex);
+  };
+
+  // Function to toggle project description
+  const toggleDescription = (projectId) => {
+    setExpandedProjects(prev => ({
+      ...prev,
+      [projectId]: !prev[projectId]
+    }));
+  };
+
+  // Function to truncate HTML content
+  const truncateHtml = (html, maxLength) => {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    const text = tempDiv.textContent || tempDiv.innerText || '';
+    
+    if (text.length <= maxLength) {
+      return html;
+    }
+    
+    // Find last space within limit
+    let truncatedText = text.substring(0, maxLength);
+    truncatedText = truncatedText.substring(0, Math.min(truncatedText.length, truncatedText.lastIndexOf(' ')));
+    
+    return truncatedText + '...';
   };
 
   return (
@@ -87,8 +113,30 @@ const Projects = () => {
                   <h3>{project.title}</h3>
                   <p 
                     className="project-description"
-                    dangerouslySetInnerHTML={{ __html: project.description }}
+                    dangerouslySetInnerHTML={{ 
+                      __html: expandedProjects[project.id] 
+                        ? project.description 
+                        : truncateHtml(project.description, 200)
+                    }}
                   ></p>
+                  
+                  {!expandedProjects[project.id] && project.description.length > 200 && (
+                    <button 
+                      className="read-more-btn"
+                      onClick={() => toggleDescription(project.id)}
+                    >
+                      Read More
+                    </button>
+                  )}
+                  
+                  {expandedProjects[project.id] && (
+                    <button 
+                      className="read-more-btn"
+                      onClick={() => toggleDescription(project.id)}
+                    >
+                      Show Less
+                    </button>
+                  )}
                   
                   <div className="tech-stack">
                     {project.technologies.map((tech, index) => (
