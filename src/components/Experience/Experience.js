@@ -5,38 +5,14 @@ const Experience = () => {
   const experiences = [
     {
       id: 1,
-      title: "Senior AI Engineer",
-      company: "Tech Innovations Inc.",
-      period: "2022 - Present",
+      title: "AI Engineer",
+      company: "NxtGen Cloud Technologies",
+      period: "Apr 2025 – Present",
       responsibilities: [
-        "Lead development of machine learning models for natural language processing applications",
-        "Designed and deployed deep learning architectures using TensorFlow and PyTorch",
-        "Implemented MLOps pipelines for continuous integration and deployment of AI models",
-        "Mentored junior AI engineers and conducted research on cutting-edge ML techniques"
-      ]
-    },
-    {
-      id: 2,
-      title: "Data Scientist",
-      company: "Digital Solutions LLC",
-      period: "2020 - 2022",
-      responsibilities: [
-        "Developed predictive models for customer behavior analysis and recommendation systems",
-        "Built interactive dashboards with Python and D3.js for data visualization",
-        "Integrated machine learning models with cloud platforms like AWS SageMaker and GCP AI",
-        "Collaborated with cross-functional teams to translate business requirements into AI solutions"
-      ]
-    },
-    {
-      id: 3,
-      title: "AI Research Intern",
-      company: "AI Research Lab",
-      period: "2019 - 2020",
-      responsibilities: [
-        "Conducted research on computer vision algorithms for medical image analysis",
-        "Worked with large datasets to train and evaluate neural networks",
-        "Published findings in peer-reviewed conferences and journals",
-        "Assisted in developing open-source tools for the AI research community"
+        "Built and optimized a Retrieval-Augmented Generation (RAG) chatbot using LLaMA 3 on the Mattermost platform to support company-wide communication. Improved response speed significantly by identifying and resolving inference bottlenecks.",
+        "Designed a time series–based sales forecasting system (ARIMA, Prophet) to improve demand prediction. Developed a computer vision–based defect detection pipeline with synthetic data generation (Stable Diffusion), which enhanced classification accuracy for product quality checks.",
+        "Contributed to the backend of a platform that automates resume screening and candidate interviews using VLMs and LLMs. Built multiple FastAPI endpoints, implemented robust edge-case handling, and resolved critical bugs, improving product stability and reliability.",
+        "Developed an AI-powered extension for VS Code that provides intelligent code suggestions, debugging support, and automated documentation. This tool helped reduce debugging time and improved development efficiency for engineering teams."
       ]
     }
   ];
@@ -47,18 +23,19 @@ const Experience = () => {
         <div className="section-title">
           <h2>Experience</h2>
         </div>
-        <div className="timeline">
-          {experiences.map((exp, index) => (
-            <div className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`} key={exp.id}>
-              <div className="timeline-content">
-                <h3>{exp.title}</h3>
-                <span className="date">{exp.company} | {exp.period}</span>
-                <ul>
-                  {exp.responsibilities.map((responsibility, idx) => (
-                    <li key={idx}>{responsibility}</li>
-                  ))}
-                </ul>
+        <div className="experience-container">
+          {experiences.map((exp) => (
+            <div className="experience-card" key={exp.id}>
+              <div className="experience-header">
+                <h3 className="experience-title">{exp.title}</h3>
+                <span className="experience-date">{exp.period}</span>
               </div>
+              <div className="experience-company">{exp.company}</div>
+              <ul className="experience-details">
+                {exp.responsibilities.map((responsibility, idx) => (
+                  <li key={idx} className="experience-item">{responsibility}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
