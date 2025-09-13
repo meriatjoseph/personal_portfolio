@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Skills.css';
 
 const Skills = () => {
+  const [expandedCategories, setExpandedCategories] = useState({});
+
+  const toggleCategory = (categoryId) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [categoryId]: !prev[categoryId]
+    }));
+  };
+
   const skillCategories = [
     {
       id: 1,
@@ -108,26 +117,41 @@ const Skills = () => {
           <h2>Skills</h2>
         </div>
         <div className="skills-container">
-          {skillCategories.map(category => (
-            <div className="skill-category" key={category.id}>
-              <h3><i className={category.icon}></i> {category.title}</h3>
-              {category.skills.map((skill, index) => (
-                <div className="skill-bar" key={index}>
-                  <div className="skill-info">
-                    <span className="skill-name">{skill.name}</span>
-                    <span className="skill-percent">{skill.level}%</span>
-                  </div>
-                  <div className="skill-progress-track">
-                    <div 
-                      className="skill-progress" 
-                      data-percent={`${skill.level}%`} 
-                      style={{width: `${skill.level}%`}}
-                    ></div>
-                  </div>
+          {skillCategories.map(category => {
+            const isExpanded = expandedCategories[category.id];
+            const skillsToShow = isExpanded ? category.skills : category.skills.slice(0, 4);
+            
+            return (
+              <div className="skill-category" key={category.id}>
+                <h3><i className={category.icon}></i> {category.title}</h3>
+                <div className="skill-category-content">
+                  {skillsToShow.map((skill, index) => (
+                    <div className="skill-bar" key={index}>
+                      <div className="skill-info">
+                        <span className="skill-name">{skill.name}</span>
+                        <span className="skill-percent">{skill.level}%</span>
+                      </div>
+                      <div className="skill-progress-track">
+                        <div 
+                          className="skill-progress" 
+                          data-percent={`${skill.level}%`} 
+                          style={{width: `${skill.level}%`}}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                  {category.skills.length > 4 && (
+                    <button 
+                      className="btn toggle-btn"
+                      onClick={() => toggleCategory(category.id)}
+                    >
+                      {isExpanded ? 'Show Less' : 'Show More'}
+                    </button>
+                  )}
                 </div>
-              ))}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
