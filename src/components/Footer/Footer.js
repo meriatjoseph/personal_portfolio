@@ -11,18 +11,18 @@ const Footer = ({ onNavigate }) => {
     <footer className="footer-section">
       <div className="container">
         <div className="footer-content">
-          <a href="#home" className="footer-logo" onClick={(e) => handleFooterNavigation('home', e)}>Alex Morgan</a>
+          <a href="#home" className="footer-logo" onClick={(e) => handleFooterNavigation('home', e)}>Muhammed Nihas</a>
           <div className="footer-social">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/mhdnihas" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-github"></i>
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/muhammed-nihas-2a8a18260/" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-linkedin-in"></i>
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-twitter"></i>
             </a>
-            <a href="mailto:alex@example.com">
+            <a href="muhammednihas2218@gmail.com">
               <i className="fas fa-envelope"></i>
             </a>
           </div>
@@ -35,7 +35,7 @@ const Footer = ({ onNavigate }) => {
           </div>
         </div>
         <div className="copyright">
-          <p>&copy; 2025 Alex Morgan. All rights reserved.</p>
+          <p>&copy; 2025 Muhammed Nihas. All rights reserved.</p>
         </div>
       </div>
     </footer>

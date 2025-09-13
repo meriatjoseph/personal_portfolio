@@ -15,21 +15,21 @@ const Contact = () => {
               <i className="fas fa-map-marker-alt contact-icon"></i>
               <div className="contact-text">
                 <h4>Location</h4>
-                <p>San Francisco, CA</p>
+                <p>Bengluru, Karnataka</p>
               </div>
             </div>
             <div className="contact-detail">
               <i className="fas fa-envelope contact-icon"></i>
               <div className="contact-text">
                 <h4>Email</h4>
-                <a href="mailto:alex@example.com">alex@example.com</a>
+                <a href="mailto:alex@example.com">muhammednihas2218@gmail.com</a>
               </div>
             </div>
             <div className="contact-detail">
               <i className="fas fa-phone contact-icon"></i>
               <div className="contact-text">
                 <h4>Phone</h4>
-                <a href="tel:+11234567890">+1 (123) 456-7890</a>
+                <a href="tel:+11234567890">+91 8589932218</a>
               </div>
             </div>
           </div>
