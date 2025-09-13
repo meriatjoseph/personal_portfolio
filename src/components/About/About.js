@@ -10,9 +10,10 @@ const About = () => {
         </div>
         <div className="about-content">
           <div className="about-text">
-            <p>Hello! I'm Alex, an <span className="highlight">AI Engineer & Data Scientist</span> with expertise in machine learning, deep learning, and artificial intelligence technologies.</p>
-            <p>I specialize in developing intelligent systems using <span className="highlight">Python, TensorFlow, and PyTorch</span>, with a strong foundation in statistical analysis, neural networks, and data visualization. My approach combines rigorous scientific methodology with engineering excellence to create AI solutions that solve real-world problems.</p>
-            <p>With experience in both research and production environments, I bridge the gap between theoretical AI concepts and practical applications. I'm passionate about leveraging data to drive insights and build systems that augment human capabilities.</p>
+            <p>I didn't come into <span className="highlight">AI</span> through the traditional route — I started out as a self-taught developer, experimenting with data, building small projects, and constantly challenging myself to learn new things. That curiosity eventually shaped my career, and today I'm working as an <span className="highlight">AI Engineer</span> at NxtGen Cloud Technologies.</p>
+            <p>At NxtGen, I've had the chance to work on <span className="highlight">diverse projects</span> — from time series forecasting models to computer vision systems, and even building an AI agent extension for Visual Studio Code. Each project has taught me how to take an idea from scratch, experiment, fail fast, and then turn it into something that works in the real world.</p>
+            <p>What drives me is simple: I like solving <span className="highlight">problems that matter</span>. Whether it's making sense of messy time series data, exploring how LLMs and Generative AI can change the way we build tools, or finding new ways to automate workflows, I enjoy being in the middle of it.</p>
+            <p>I see myself not just as someone who writes code, but as someone who learns quickly, adapts easily, and keeps pushing to make <span className="highlight">AI practical, useful, and impactful</span>.</p>
             <button className="btn btn-secondary">Download Resume</button>
           </div>
         </div>
