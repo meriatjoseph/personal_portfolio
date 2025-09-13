@@ -23,11 +23,12 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "Computer Vision for Medical Imaging",
-      description: "A deep learning system for detecting anomalies in medical scans with 95% accuracy, deployed on cloud infrastructure.",
-      technologies: ["TensorFlow", "OpenCV", "AWS"],
-      demoLink: "#",
-      sourceLink: "#"
+      title: "Indian Constitution Chatbot",
+      description: "The Indian Constitution Chatbot is an AI-powered assistant designed to bridge the gap between citizens and constitutional knowledge. Many people struggle due to a lack of awareness about their fundamental rights, legal remedies, and government policies. This intelligent chatbot provides quick, reliable, and well-structured legal insights, making constitutional information easily accessible to everyone.<br/><br/>• Implemented Retrieval-Augmented Generation (RAG) to fetch relevant constitutional documents based on user queries from a vector database<br/>• Utilized FAISS (Facebook AI Similarity Search) for efficient and scalable document retrieval<br/>• Integrated Gemini Pro as the Large Language Model (LLM) to generate accurate responses<br/>• Developed a data processing pipeline create stuff documents chain to seamlessly transfer retrieved data to the LLM<br/>• Used Hugging Face embedding methods for vectorizing text and improving search accuracy<br/>• Built and deployed an API using FastAPI, making the chatbot accessible and scalable<br/>• Successfully deployed the application on Hugging Face Spaces with Docker for public access",
+      technologies: ["RAG", "Gemini Pro", "LangChain", "FAISS", "Hugging Face", "Python", "FastAPI", "RESTful API", "Docker", "HTML", "CSS", "JavaScript", "Hugging Face Spaces"],
+      demoLink: "https://nihas2218-indian-constitution-bot.hf.space/",
+      sourceLink: "https://github.com/mhdnihas/Indian-Constitution-Bot?tab=readme-ov-file",
+      image: "/indian-constitution-chatbot.png"
     },
     {
       id: 4,
