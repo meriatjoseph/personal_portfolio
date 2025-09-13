@@ -32,11 +32,12 @@ const Projects = () => {
     },
     {
       id: 4,
-      title: "Real-time Data Analytics Dashboard",
-      description: "An interactive dashboard for real-time data visualization and business intelligence, processing thousands of data points per second.",
-      technologies: ["React", "D3.js", "Node.js"],
+      title: "NASA Jet Engine RUL Prediction",
+      description: "Developed a Remaining Useful Life (RUL) Prediction model for aircraft engines using NASA's C-MAPSS dataset. Implemented time-series forecasting and machine learning techniques to predict engine failure and optimize maintenance. Addressed challenges like sensor noise, variable operating conditions, and multiple fault modes to improve predictive accuracy<br/><br/>• Conducted Exploratory Data Analysis (EDA) to understand data patterns and distributions<br/>• Performed Feature Engineering to enhance model performance<br/>• Developed a high-performance Random Forest model for accurate predictions",
+      technologies: ["Python", "Machine Learning", "Random Forest", "Time Series Forecasting", "Feature Engineering", "Exploratory Data Analysis"],
       demoLink: "#",
-      sourceLink: "#"
+      sourceLink: "https://github.com/mhdnihas/NASA-Predictive-Engine-Maintenance",
+      image: "/nasa-jet-engine-rul.png"
     }
   ];
 
