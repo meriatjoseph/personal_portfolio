@@ -14,7 +14,7 @@ const About = () => {
             <p>At NxtGen, I've had the chance to work on <span className="highlight">diverse projects</span> — from time series forecasting models to computer vision systems, and even building an AI agent extension for Visual Studio Code. Each project has taught me how to take an idea from scratch, experiment, fail fast, and then turn it into something that works in the real world.</p>
             <p>What drives me is simple: I like solving <span className="highlight">problems that matter</span>. Whether it's making sense of messy time series data, exploring how LLMs and Generative AI can change the way we build tools, or finding new ways to automate workflows, I enjoy being in the middle of it.</p>
             <p>I see myself not just as someone who writes code, but as someone who learns quickly, adapts easily, and keeps pushing to make <span className="highlight">AI practical, useful, and impactful</span>.</p>
-            <button className="btn btn-secondary">Download Resume</button>
+            <a href="/resume.pdf" download className="btn btn-secondary">Download Resume</a>
           </div>
         </div>
       </div>
