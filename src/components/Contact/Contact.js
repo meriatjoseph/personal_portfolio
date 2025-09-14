@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { getEmailJSConfig, isEmailJSConfigured } from '../../config/emailjs';
 import './Contact.css';
 
 const Contact = () => {
@@ -25,13 +26,8 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // EmailJS configuration from environment variables
-    const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-    const templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-    const userID = process.env.REACT_APP_EMAILJS_USER_ID;
-
-    // Check if we have the required EmailJS credentials
-    if (!serviceID || !templateID || !userID) {
+    // Check if EmailJS is properly configured
+    if (!isEmailJSConfigured()) {
       console.error('EmailJS credentials are not configured. Please set up your EmailJS account and update the credentials.');
       setSubmitStatus({ 
         type: 'error', 
@@ -40,6 +36,9 @@ const Contact = () => {
       setIsSubmitting(false);
       return;
     }
+
+    // Get EmailJS configuration
+    const { SERVICE_ID, TEMPLATE_ID, USER_ID } = getEmailJSConfig();
 
     // Prepare template parameters
     const templateParams = {
@@ -51,7 +50,7 @@ const Contact = () => {
     };
 
     // Send notification email to site owner
-    emailjs.send(serviceID, templateID, templateParams, userID)
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID)
       .then((result) => {
         console.log('Email sent successfully:', result);
         setSubmitStatus({ 
