@@ -63,62 +63,48 @@ const Achievements = () => {
     }
   ];
 
-  const itemsPerPage = 3;
-  const groupedAchievements = [];
   const dataLength = achievementsData.length;
 
-  if (dataLength > itemsPerPage) {
-    for (let i = 0; i < dataLength; i++) {
-      const page = [];
-      for (let j = 0; j < itemsPerPage; j++) {
-        page.push(achievementsData[(i + j) % dataLength]);
-      }
-      groupedAchievements.push(page);
-    }
-  } else {
-    groupedAchievements.push(achievementsData);
-  }
-
   const goToPrev = useCallback(() => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? groupedAchievements.length - 1 : prevIndex - 1
-    );
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + dataLength) % dataLength);
     setIsAutoPlaying(false);
-  }, [groupedAchievements.length]);
+  }, [dataLength]);
 
   const goToNext = useCallback(() => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === groupedAchievements.length - 1 ? 0 : prevIndex + 1
-    );
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % dataLength);
     setIsAutoPlaying(false);
-  }, [groupedAchievements.length]);
+  }, [dataLength]);
 
   const handleKeyDown = useCallback((e) => {
-    if (e.key === 'ArrowLeft') {
-      goToPrev();
-    } else if (e.key === 'ArrowRight') {
-      goToNext();
-    }
-  }, [goToNext, goToPrev]);
+    if (e.key === 'ArrowLeft') goToPrev();
+    if (e.key === 'ArrowRight') goToNext();
+  }, [goToPrev, goToNext]);
 
   useEffect(() => {
     let interval;
-    if (isAutoPlaying && groupedAchievements.length > 1) {
-      interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => 
-          prevIndex === groupedAchievements.length - 1 ? 0 : prevIndex + 1
-        );
-      }, 3000); // Change slide every 3 seconds
+    if (isAutoPlaying) {
+      interval = setInterval(goToNext, 3000);
     }
     return () => clearInterval(interval);
-  }, [isAutoPlaying, groupedAchievements.length]);
+  }, [isAutoPlaying, goToNext]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
+
+  const getCardClassName = (index) => {
+    const offset = index - currentIndex;
+    const absOffset = Math.abs(offset);
+    const distance = Math.min(absOffset, dataLength - absOffset);
+
+    if (distance === 0) return 'active';
+    if (distance === 1) {
+      const direction = (offset > 0 && distance === absOffset) || (offset < 0 && distance !== absOffset) ? 'next' : 'prev';
+      return direction;
+    }
+    return 'inactive';
+  };
 
   const openModal = (image) => {
     setModalImage(image);
@@ -130,74 +116,45 @@ const Achievements = () => {
     setIsAutoPlaying(true);
   };
 
-  const handleMouseEnter = () => {
-    setIsAutoPlaying(false);
-  };
-
-  const handleMouseLeave = () => {
-    setIsAutoPlaying(true);
-  };
-
   return (
     <section id="achievements" className="achievements-section">
       <div className="container">
         <div className="section-title">
           <h2>Achievements</h2>
         </div>
-        <div 
-          className="carousel-container"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+        <div className="carousel-container">
+          <div 
+            className="carousel-wrapper"
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
+          >
+            {achievementsData.map((achievement, index) => (
+              <div className={`achievement-card ${getCardClassName(index)}`} key={achievement.id}>
+                <div className="achievement-header">
+                  <div className={`platform-icon ${achievement.type}`}>
+                    {achievement.type === 'leetcode' ? <i className="fab fa-slack-hash"></i> : <i className="fab fa-github"></i>}
+                  </div>
+                  <h3 className="achievement-title">{achievement.title}</h3>
+                  <span className="achievement-year">{achievement.year}</span>
+                </div>
+                <div className="achievement-platform">{achievement.platform}</div>
+                <div className="badge-preview" onClick={() => openModal(achievement.image)}>
+                  <img src={achievement.image} alt={`${achievement.platform} ${achievement.title}`} />
+                </div>
+                <a href={achievement.verificationLink} className="verify-link" target="_blank" rel="noopener noreferrer">
+                  View Achievement <i className="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            ))}
+          </div>
           <button className="carousel-btn prev-btn" onClick={goToPrev} aria-label="Previous achievement">
             <i className="fas fa-chevron-left"></i>
           </button>
-          
-          <div className="carousel-wrapper">
-            <div 
-              className="carousel-track"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-              {groupedAchievements.map((group, groupIndex) => (
-                <div 
-                  className="carousel-slide" 
-                  key={groupIndex}
-                >
-                  <div className="achievements-grid">
-                    {group.map((achievement, itemIndex) => (
-                      <div className="achievement-card" key={`${achievement.id}-${itemIndex}`}>
-                        <div className="achievement-header">
-                          <div className={`platform-icon ${achievement.type}`}>
-                            {achievement.type === 'leetcode' ? (
-                              <i className="fab fa-slack-hash"></i>
-                            ) : (
-                              <i className="fab fa-github"></i>
-                            )}
-                          </div>
-                          <h3 className="achievement-title">{achievement.title}</h3>
-                          <span className="achievement-year">{achievement.year}</span>
-                        </div>
-                        <div className="achievement-platform">{achievement.platform}</div>
-                        <div className="badge-preview" onClick={() => openModal(achievement.image)}>
-                          <img src={achievement.image} alt={`${achievement.platform} ${achievement.title}`} />
-                        </div>
-                        <a href={achievement.verificationLink} className="verify-link" target="_blank" rel="noopener noreferrer">
-                          View Achievement <i className="fas fa-external-link-alt"></i>
-                        </a>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          
           <button className="carousel-btn next-btn" onClick={goToNext} aria-label="Next achievement">
             <i className="fas fa-chevron-right"></i>
           </button>
         </div>
       </div>
-      
       {modalImage && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
