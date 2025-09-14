@@ -5,8 +5,10 @@ import Hero from './components/Hero/Hero';
 import About from './components/About/About';
 import Experience from './components/Experience/Experience';
 import Skills from './components/Skills/Skills';
+import Education from './components/Education/Education';
+import Certifications from './components/Certifications/Certifications';
+import Achievements from './components/Achievements/Achievements';
 import Projects from './components/Projects/Projects';
-import Testimonials from './components/Testimonials/Testimonials';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 
@@ -40,8 +42,10 @@ function App() {
       <About />
       <Experience />
       <Skills />
+      <Education />
+      <Certifications />
+      <Achievements />
       <Projects />
-      <Testimonials />
       <Contact />
       <Footer onNavigate={handleScrollToSection} />
       
