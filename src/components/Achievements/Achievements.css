@@ -57,6 +57,18 @@
   z-index: 5;
 }
 
+.achievement-card.prev-2 {
+  transform: translateX(-80%) translateZ(-450px) rotateY(55deg);
+  opacity: 0.2;
+  z-index: 4;
+}
+
+.achievement-card.next-2 {
+  transform: translateX(80%) translateZ(-450px) rotateY(-55deg);
+  opacity: 0.2;
+  z-index: 4;
+}
+
 .achievement-card.inactive {
   transform: translateZ(-500px) rotateY(0);
   opacity: 0;
@@ -91,6 +103,19 @@
 
 .prev-btn { left: 0; }
 .next-btn { right: 0; }
+
+.carousel-pagination {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 1.1rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.carousel-pagination .current-page {
+  color: var(--dark-color);
+  font-size: 1.2rem;
+}
 
 /* Keep card content styles */
 .achievement-header, .platform-icon, .achievement-title, .achievement-year, .achievement-platform, .badge-preview, .verify-link {

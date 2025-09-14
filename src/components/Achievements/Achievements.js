@@ -97,12 +97,14 @@ const Achievements = () => {
     const offset = index - currentIndex;
     const absOffset = Math.abs(offset);
     const distance = Math.min(absOffset, dataLength - absOffset);
+    if (distance > 2) return 'inactive';
+
+    const direction = (offset > 0 && distance === absOffset) || (offset < 0 && distance !== absOffset) ? 'next' : 'prev';
 
     if (distance === 0) return 'active';
-    if (distance === 1) {
-      const direction = (offset > 0 && distance === absOffset) || (offset < 0 && distance !== absOffset) ? 'next' : 'prev';
-      return direction;
-    }
+    if (distance === 1) return direction;
+    if (distance === 2) return `${direction}-2`;
+    
     return 'inactive';
   };
 
@@ -153,6 +155,9 @@ const Achievements = () => {
           <button className="carousel-btn next-btn" onClick={goToNext} aria-label="Next achievement">
             <i className="fas fa-chevron-right"></i>
           </button>
+        </div>
+        <div className="carousel-pagination">
+          <span className="current-page">{currentIndex + 1}</span> / {dataLength}
         </div>
       </div>
       {modalImage && (

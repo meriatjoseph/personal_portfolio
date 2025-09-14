@@ -58,6 +58,18 @@
   z-index: 5;
 }
 
+.project-card.prev-2 {
+  transform: translateX(-90%) translateZ(-500px) rotateY(60deg);
+  opacity: 0.1;
+  z-index: 4;
+}
+
+.project-card.next-2 {
+  transform: translateX(90%) translateZ(-500px) rotateY(-60deg);
+  opacity: 0.1;
+  z-index: 4;
+}
+
 .project-card.inactive {
   transform: translateZ(-600px) rotateY(0);
   opacity: 0;
@@ -89,6 +101,19 @@
 
 .carousel-btn:hover { transform: translateY(-50%) scale(1.05); }
 .carousel-btn:active { transform: translateY(-50%); }
+
+.carousel-pagination {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 1.1rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.carousel-pagination .current-page {
+  color: var(--dark-color);
+  font-size: 1.2rem;
+}
 
 /* Content styles below are mostly unchanged */
 .project-img {
