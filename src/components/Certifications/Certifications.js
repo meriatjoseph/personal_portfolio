@@ -5,39 +5,35 @@ const Certifications = () => {
   const certificationsData = [
     {
       id: 1,
-      title: "Google Professional Machine Learning Engineer",
-      issuer: "Google Cloud",
-      date: "March 2025",
-      credentialId: "ML-123456",
-      verificationLink: "#",
-      skills: ["Machine Learning", "Google Cloud", "TensorFlow", "Feature Engineering"]
+      title: "Data Science & AI",
+      issuer: "Brototype",
+      date: "2023-2025",
+      verificationLink: "https://brocamp.brototype.com/portfolio?id=365dc898-7541-43df-a41c-2fafb54b9529",
+      skills: ["Machine Learning", "Deep Learning", "Python", "Generative AI", "Data Analysis", "Projects", "DBMS"]
     },
     {
       id: 2,
-      title: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
-      date: "November 2024",
-      credentialId: "AWS-789012",
-      verificationLink: "#",
-      skills: ["Cloud Architecture", "AWS Services", "Security", "High Availability"]
+      title: "Pandas",
+      issuer: "Kaggle",
+      date: "Completed 2024",
+      verificationLink: "https://www.kaggle.com/learn/certification/muhammednihas/pandas",
+      skills: ["Indexing", "Summary Functions and Mapping", "Grouping and Sorting", "Data Manipulation"]
     },
     {
       id: 3,
-      title: "Deep Learning Specialization",
-      issuer: "DeepLearning.AI",
-      date: "August 2024",
-      credentialId: "DL-345678",
+      title: "MLops",
+      issuer: "Udemy",
+      date: "Completed 2025",
       verificationLink: "#",
-      skills: ["Neural Networks", "CNN", "RNN", "Transformers"]
+      skills: ["mlflow", "flask", "CI/CD", "Github Action"]
     },
     {
       id: 4,
-      title: "Natural Language Processing",
-      issuer: "Stanford University",
-      date: "May 2024",
-      credentialId: "NLP-901234",
+      title: "Building RAG Agents with LLMs",
+      issuer: "NVIDIA",
+      date: "2025",
       verificationLink: "#",
-      skills: ["NLP", "Text Processing", "Sentiment Analysis", "Language Models"]
+      skills: ["Langchain", "vector storage", "embeddings"]
     }
   ];
 
@@ -55,7 +51,6 @@ const Certifications = () => {
                 <span className="certification-date">{cert.date}</span>
               </div>
               <div className="certification-issuer">{cert.issuer}</div>
-              <div className="certification-id">Credential ID: {cert.credentialId}</div>
               <div className="certification-skills">
                 {cert.skills.map((skill, idx) => (
                   <span key={idx} className="skill-tag">{skill}</span>
