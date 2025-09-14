@@ -35,6 +35,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
 }
 
 .nav-menu {
@@ -56,6 +61,7 @@
   transition: all 0.3s ease;
   position: relative;
   padding: 8px 0;
+  border-radius: 4px;
 }
 
 .nav-link:hover {
@@ -78,6 +84,11 @@
   width: 100%;
 }
 
+.nav-link:focus {
+  outline: 2px dashed #06B6D4;
+  outline-offset: 2px;
+}
+
 .hamburger {
   display: none;
   cursor: pointer;
@@ -86,10 +97,12 @@
   outline: none;
   padding: 5px;
   border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
 .hamburger:hover {
   background: rgba(255, 255, 255, 0.1);
+  transform: rotate(90deg);
 }
 
 .bar {
