@@ -1,4 +1,5 @@
 import React from 'react';
+import { SiLeetcode } from "react-icons/si";
 import './Footer.css';
 
 const Footer = ({ onNavigate }) => {
@@ -19,8 +20,14 @@ const Footer = ({ onNavigate }) => {
             <a href="https://www.linkedin.com/in/muhammed-nihas-2a8a18260/" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-linkedin-in"></i>
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/MuhammedNi2218" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.kaggle.com/muhammednihas" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-kaggle"></i>
+            </a>
+            <a href="https://leetcode.com/u/muhammednihas2218/" target="_blank" rel="noopener noreferrer">
+              <SiLeetcode size={24} style={{ color: "white" }} />
             </a>
             <a href="muhammednihas2218@gmail.com">
               <i className="fas fa-envelope"></i>
