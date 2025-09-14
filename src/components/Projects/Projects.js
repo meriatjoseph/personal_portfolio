@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Projects.css';
 
 const Projects = () => {
@@ -41,32 +41,55 @@ const Projects = () => {
     }
   ];
 
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [expandedProjects, setExpandedProjects] = useState({});
+  
   const projectsPerPage = 3;
-  
-  // Calculate total pages
-  const totalPages = Math.ceil(projects.length / projectsPerPage);
-  
-  // Get current projects to display
-  const startIndex = currentPage * projectsPerPage;
-  const endIndex = startIndex + projectsPerPage;
-  const currentProjects = projects.slice(startIndex, endIndex);
-  
-  // Navigation functions
-  const goToNextPage = () => {
-    setCurrentPage((prevPage) => (prevPage + 1) % totalPages);
-  };
-  
-  const goToPrevPage = () => {
-    setCurrentPage((prevPage) => (prevPage - 1 + totalPages) % totalPages);
-  };
-  
-  const goToPage = (pageIndex) => {
-    setCurrentPage(pageIndex);
-  };
+  const groupedProjects = [];
+  const dataLength = projects.length;
 
-  // Function to toggle project description
+  if (dataLength > projectsPerPage) {
+    for (let i = 0; i < dataLength; i++) {
+      const page = [];
+      for (let j = 0; j < projectsPerPage; j++) {
+        page.push(projects[(i + j) % dataLength]);
+      }
+      groupedProjects.push(page);
+    }
+  } else {
+    groupedProjects.push(projects);
+  }
+
+  const goToPrev = useCallback(() => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? groupedProjects.length - 1 : prevIndex - 1
+    );
+    setIsAutoPlaying(false);
+  }, [groupedProjects.length]);
+
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === groupedProjects.length - 1 ? 0 : prevIndex + 1
+    );
+    setIsAutoPlaying(false);
+  }, [groupedProjects.length]);
+
+  useEffect(() => {
+    let interval;
+    if (isAutoPlaying && groupedProjects.length > 1) {
+      interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => 
+          prevIndex === groupedProjects.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 3000); // Change slide every 3 seconds
+    }
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, groupedProjects.length]);
+
+  const handleMouseEnter = () => setIsAutoPlaying(false);
+  const handleMouseLeave = () => setIsAutoPlaying(true);
+
   const toggleDescription = (projectId) => {
     setExpandedProjects(prev => ({
       ...prev,
@@ -74,7 +97,6 @@ const Projects = () => {
     }));
   };
 
-  // Function to truncate HTML content
   const truncateHtml = (html, maxLength) => {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = html;
@@ -84,7 +106,6 @@ const Projects = () => {
       return html;
     }
     
-    // Find last space within limit
     let truncatedText = text.substring(0, maxLength);
     truncatedText = truncatedText.substring(0, Math.min(truncatedText.length, truncatedText.lastIndexOf(' ')));
     
@@ -98,89 +119,80 @@ const Projects = () => {
           <h2>Projects</h2>
         </div>
         
-        <div className="projects-carousel">
-          <div className="projects-grid">
-            {currentProjects.map(project => (
-              <div className="project-card" key={project.id}>
-                <div className="project-img">
-                  {project.image ? (
-                    <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  ) : (
-                    'AI Project Image'
-                  )}
-                </div>
-                <div className="project-content">
-                  <h3>{project.title}</h3>
-                  <p 
-                    className="project-description"
-                    dangerouslySetInnerHTML={{ 
-                      __html: expandedProjects[project.id] 
-                        ? project.description 
-                        : truncateHtml(project.description, 200)
-                    }}
-                  ></p>
-                  
-                  {!expandedProjects[project.id] && project.description.length > 200 && (
-                    <button 
-                      className="read-more-btn"
-                      onClick={() => toggleDescription(project.id)}
-                    >
-                      Read More
-                    </button>
-                  )}
-                  
-                  {expandedProjects[project.id] && (
-                    <button 
-                      className="read-more-btn"
-                      onClick={() => toggleDescription(project.id)}
-                    >
-                      Show Less
-                    </button>
-                  )}
-                  
-                  <div className="tech-stack">
-                    {project.technologies.map((tech, index) => (
-                      <span className="tech-item" key={index}>{tech}</span>
+        <div 
+          className="projects-carousel-container"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <button className="carousel-btn prev-btn" onClick={goToPrev} aria-label="Previous projects">
+            <i className="fas fa-chevron-left"></i>
+          </button>
+          <div className="projects-carousel-wrapper">
+            <div 
+              className="projects-carousel-track"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {groupedProjects.map((group, groupIndex) => (
+                <div className="projects-carousel-slide" key={groupIndex}>
+                  <div className="projects-grid">
+                    {group.map((project, itemIndex) => (
+                      <div className="project-card" key={`${project.id}-${itemIndex}`}>
+                        <div className="project-img">
+                          {project.image ? (
+                            <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          ) : (
+                            'AI Project Image'
+                          )}
+                        </div>
+                        <div className="project-content">
+                          <h3>{project.title}</h3>
+                          <p 
+                            className="project-description"
+                            dangerouslySetInnerHTML={{ 
+                              __html: expandedProjects[project.id] 
+                                ? project.description 
+                                : truncateHtml(project.description, 200)
+                            }}
+                          ></p>
+                          
+                          {!expandedProjects[project.id] && project.description.length > 200 && (
+                            <button 
+                              className="read-more-btn"
+                              onClick={() => toggleDescription(project.id)}
+                            >
+                              Read More
+                            </button>
+                          )}
+                          
+                          {expandedProjects[project.id] && (
+                            <button 
+                              className="read-more-btn"
+                              onClick={() => toggleDescription(project.id)}
+                            >
+                              Show Less
+                            </button>
+                          )}
+                          
+                          <div className="tech-stack">
+                            {project.technologies.map((tech, index) => (
+                              <span className="tech-item" key={index}>{tech}</span>
+                            ))}
+                          </div>
+                          <div className="project-links">
+                            <a href={project.demoLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href={project.sourceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i> Source Code</a>
+                          </div>
+                        </div>
+                      </div>
                     ))}
                   </div>
-                  <div className="project-links">
-                    <a href={project.demoLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fas fa-external-link-alt"></i> Live Demo</a>
-                    <a href={project.sourceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i> Source Code</a>
-                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-          
-          {/* Navigation Controls */}
-          <div className="carousel-controls">
-            <button 
-              className="carousel-btn prev-btn" 
-              onClick={goToPrevPage}
-              aria-label="Previous projects"
-            >
-              <i className="fas fa-chevron-left"></i>
-            </button>
-            
-            <div className="carousel-indicators">
-              {Array.from({ length: totalPages }).map((_, index) => (
-                <button
-                  key={index}
-                  className={`indicator ${index === currentPage ? 'active' : ''}`}
-                  onClick={() => goToPage(index)}
-                  aria-label={`Go to page ${index + 1}`}
-                ></button>
               ))}
             </div>
-            
-            <button 
-              className="carousel-btn next-btn" 
-              onClick={goToNextPage}
-              aria-label="Next projects"
-            >
-              <i className="fas fa-chevron-right"></i>
-            </button>
           </div>
+          <button className="carousel-btn next-btn" onClick={goToNext} aria-label="Next projects">
+            <i className="fas fa-chevron-right"></i>
+          </button>
         </div>
       </div>
     </section>

@@ -63,27 +63,36 @@ const Achievements = () => {
     }
   ];
 
-  // Group achievements into sets of 3
+  const itemsPerPage = 3;
   const groupedAchievements = [];
-  for (let i = 0; i < achievementsData.length; i += 3) {
-    groupedAchievements.push(achievementsData.slice(i, i + 3));
+  const dataLength = achievementsData.length;
+
+  if (dataLength > itemsPerPage) {
+    for (let i = 0; i < dataLength; i++) {
+      const page = [];
+      for (let j = 0; j < itemsPerPage; j++) {
+        page.push(achievementsData[(i + j) % dataLength]);
+      }
+      groupedAchievements.push(page);
+    }
+  } else {
+    groupedAchievements.push(achievementsData);
   }
 
   const goToPrev = useCallback(() => {
     setCurrentIndex((prevIndex) => 
       prevIndex === 0 ? groupedAchievements.length - 1 : prevIndex - 1
     );
-    setIsAutoPlaying(false); // Pause auto-play on manual navigation
+    setIsAutoPlaying(false);
   }, [groupedAchievements.length]);
 
   const goToNext = useCallback(() => {
     setCurrentIndex((prevIndex) => 
       prevIndex === groupedAchievements.length - 1 ? 0 : prevIndex + 1
     );
-    setIsAutoPlaying(false); // Pause auto-play on manual navigation
+    setIsAutoPlaying(false);
   }, [groupedAchievements.length]);
 
-  // Handle keyboard navigation
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'ArrowLeft') {
       goToPrev();
@@ -92,7 +101,6 @@ const Achievements = () => {
     }
   }, [goToNext, goToPrev]);
 
-  // Auto-play functionality
   useEffect(() => {
     let interval;
     if (isAutoPlaying && groupedAchievements.length > 1) {
@@ -100,12 +108,11 @@ const Achievements = () => {
         setCurrentIndex((prevIndex) => 
           prevIndex === groupedAchievements.length - 1 ? 0 : prevIndex + 1
         );
-      }, 5000); // Change slide every 5 seconds
+      }, 3000); // Change slide every 3 seconds
     }
     return () => clearInterval(interval);
   }, [isAutoPlaying, groupedAchievements.length]);
 
-  // Keyboard event listener
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => {
@@ -115,29 +122,18 @@ const Achievements = () => {
 
   const openModal = (image) => {
     setModalImage(image);
-    setIsAutoPlaying(false); // Pause carousel when modal is open
+    setIsAutoPlaying(false);
   };
 
   const closeModal = () => {
     setModalImage(null);
-    setIsAutoPlaying(true); // Resume carousel when modal is closed
+    setIsAutoPlaying(true);
   };
 
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-    setIsAutoPlaying(false); // Pause auto-play on manual navigation
-  };
-
-  const toggleAutoPlay = () => {
-    setIsAutoPlaying(!isAutoPlaying);
-  };
-
-  // Pause auto-play on hover
   const handleMouseEnter = () => {
     setIsAutoPlaying(false);
   };
 
-  // Resume auto-play on mouse leave
   const handleMouseLeave = () => {
     setIsAutoPlaying(true);
   };
@@ -168,8 +164,8 @@ const Achievements = () => {
                   key={groupIndex}
                 >
                   <div className="achievements-grid">
-                    {group.map((achievement) => (
-                      <div className="achievement-card" key={achievement.id}>
+                    {group.map((achievement, itemIndex) => (
+                      <div className="achievement-card" key={`${achievement.id}-${itemIndex}`}>
                         <div className="achievement-header">
                           <div className={`platform-icon ${achievement.type}`}>
                             {achievement.type === 'leetcode' ? (
@@ -200,31 +196,6 @@ const Achievements = () => {
             <i className="fas fa-chevron-right"></i>
           </button>
         </div>
-        
-        <div className="carousel-controls">
-          <div className="carousel-indicators">
-            {groupedAchievements.map((_, index) => (
-              <span 
-                key={index} 
-                className={`indicator ${index === currentIndex ? 'active' : ''}`}
-                onClick={() => goToSlide(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              ></span>
-            ))}
-          </div>
-          
-          <button 
-            className="autoplay-toggle" 
-            onClick={toggleAutoPlay}
-            aria-label={isAutoPlaying ? "Pause slideshow" : "Play slideshow"}
-          >
-            {isAutoPlaying ? (
-              <i className="fas fa-pause"></i>
-            ) : (
-              <i className="fas fa-play"></i>
-            )}
-          </button>
-        </div>
       </div>
       
       {modalImage && (
@@ -240,3 +211,4 @@ const Achievements = () => {
 };
 
 export default Achievements;
+
