@@ -67,71 +67,29 @@
   font-size: 1.4rem;
 }
 
-.skill-bar {
-  margin: 25px 0;
-}
-
-.skill-info {
+.skills-list {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
 }
 
-.skill-name {
-  color: var(--text-dark);
+.skill-tag {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(14, 165, 233, 0.1));
+  color: var(--primary-dark);
+  padding: 12px 20px;
+  border-radius: 50px;
   font-weight: 600;
-  font-size: 1.05rem;
-}
-
-.skill-percent {
-  color: var(--primary-color);
-  font-weight: 700;
   font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(6, 182, 212, 0.2);
 }
 
-.skill-progress-track {
-  height: 12px;
-  background-color: #E2E8F0;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-}
-
-.skill-progress-track::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-}
-
-.skill-progress {
-  height: 100%;
-  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-  border-radius: 10px;
-  position: relative;
-  transition: width 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 3px 10px rgba(6, 182, 212, 0.3);
-}
-
-.skill-progress::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-  border-radius: 10px;
-}
-
-.toggle-btn {
-  width: 100%;
-  margin-top: 20px;
-  padding: 12px;
-  font-size: 1rem;
+.skill-tag:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: #FFFFFF;
+  box-shadow: 0 8px 15px rgba(6, 182, 212, 0.3);
 }
 
 /* Responsive Design */

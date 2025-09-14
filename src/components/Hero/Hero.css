@@ -1,6 +1,6 @@
 .hero-section {
   background: linear-gradient(135deg, #0F172A 0%, #1e293b 100%);
-  padding: 180px 20px 120px;
+  padding: 200px 20px 140px;
   color: #FFFFFF;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@
 
 .profile-container {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   z-index: 1;
   animation: fadeInScale 1s ease-out;
 }
@@ -142,8 +142,8 @@ h1 {
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 25px;
-  margin: 30px 0 50px;
+  gap: 30px;
+  margin: 40px 0 60px;
   position: relative;
   z-index: 1;
   animation: fadeIn 1s ease-out 0.7s both;
@@ -153,12 +153,12 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 50%;
   color: #FFFFFF;
-  font-size: 1.7rem;
+  font-size: 2rem;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   text-decoration: none;
   backdrop-filter: blur(10px);
@@ -182,9 +182,9 @@ h1 {
 }
 
 .social-icon:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3);
-  border-color: rgba(6, 182, 212, 0.3);
+  transform: translateY(-10px) scale(1.1);
+  box-shadow: 0 15px 25px rgba(6, 182, 212, 0.4);
+  border-color: rgba(6, 182, 212, 0.4);
 }
 
 .social-icon:hover::before {
@@ -208,6 +208,21 @@ h1 {
   position: relative;
   z-index: 1;
   animation: fadeInUp 1s ease-out 0.9s both;
+  background: linear-gradient(135deg, #06B6D4, #0EA5E9);
+  color: #FFFFFF;
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3);
 }
 
 @keyframes fadeIn {

@@ -27,7 +27,7 @@ const Header = ({ onNavigate }) => {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
-        <a href="#home" className="nav-logo" onClick={(e) => handleNavigationClick('home', e)}>Portfolio</a>
+        <a href="#home" className="nav-logo" onClick={(e) => handleNavigationClick('home', e)}>Muhammed Nihas</a>
         
         <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <li className="nav-item">
@@ -51,9 +51,7 @@ const Header = ({ onNavigate }) => {
           <li className="nav-item">
             <a href="#projects" className="nav-link" onClick={(e) => handleNavigationClick('projects', e)}>Projects</a>
           </li>
-          <li className="nav-item">
-            <a href="#testimonials" className="nav-link" onClick={(e) => handleNavigationClick('testimonials', e)}>Testimonials</a>
-          </li>
+          
           <li className="nav-item">
             <a href="#contact" className="nav-link" onClick={(e) => handleNavigationClick('contact', e)}>Contact</a>
           </li>
