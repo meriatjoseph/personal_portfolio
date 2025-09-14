@@ -46,6 +46,9 @@ const Header = ({ onNavigate }) => {
             <a href="#certifications" className="nav-link" onClick={(e) => handleNavigationClick('certifications', e)}>Certifications</a>
           </li>
           <li className="nav-item">
+            <a href="#achievements" className="nav-link" onClick={(e) => handleNavigationClick('achievements', e)}>Achievements</a>
+          </li>
+          <li className="nav-item">
             <a href="#projects" className="nav-link" onClick={(e) => handleNavigationClick('projects', e)}>Projects</a>
           </li>
           <li className="nav-item">
