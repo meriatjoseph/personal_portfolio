@@ -9,7 +9,6 @@ import Education from './components/Education/Education';
 import Certifications from './components/Certifications/Certifications';
 import Achievements from './components/Achievements/Achievements';
 import Projects from './components/Projects/Projects';
-import Testimonials from './components/Testimonials/Testimonials';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 
@@ -47,7 +46,6 @@ function App() {
       <Certifications />
       <Achievements />
       <Projects />
-      <Testimonials />
       <Contact />
       <Footer onNavigate={handleScrollToSection} />
       
