@@ -37,6 +37,8 @@ const Footer = ({ onNavigate }) => {
             <a href="#about" className="footer-link" onClick={(e) => handleFooterNavigation('about', e)}>About</a>
             <a href="#experience" className="footer-link" onClick={(e) => handleFooterNavigation('experience', e)}>Experience</a>
             <a href="#skills" className="footer-link" onClick={(e) => handleFooterNavigation('skills', e)}>Skills</a>
+            <a href="#education" className="footer-link" onClick={(e) => handleFooterNavigation('education', e)}>Education</a>
+            <a href="#certifications" className="footer-link" onClick={(e) => handleFooterNavigation('certifications', e)}>Certifications</a>
             <a href="#projects" className="footer-link" onClick={(e) => handleFooterNavigation('projects', e)}>Projects</a>
             <a href="#contact" className="footer-link" onClick={(e) => handleFooterNavigation('contact', e)}>Contact</a>
           </div>
