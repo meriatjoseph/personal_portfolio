@@ -1,4 +1,5 @@
 # Personal Portfolio Website
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://muhammednihas-portfolio-pied-phi.vercel.app/)
 
 A modern, responsive portfolio website built with React to showcase skills, projects, and professional experience. This website includes a functional contact form powered by EmailJS for seamless communication.
 
