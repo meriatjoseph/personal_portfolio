@@ -29,7 +29,7 @@ const Hero = ({ onScrollToProjects }) => {
         <a href="https://leetcode.com/u/muhammednihas2218/" target="_blank" rel="noopener noreferrer" className="social-icon">
           <SiLeetcode size={24} style={{ color: "white" }} />
         </a>
-        <a href="muhammednihas2218@gmail.com" className="social-icon">
+        <a href="mailto:muhammednihas2218@gmail.com" className="social-icon">
           <i className="fas fa-envelope"></i>
         </a>
       </div>

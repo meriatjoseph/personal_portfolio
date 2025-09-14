@@ -29,7 +29,7 @@ const Footer = ({ onNavigate }) => {
             <a href="https://leetcode.com/u/muhammednihas2218/" target="_blank" rel="noopener noreferrer">
               <SiLeetcode size={24} style={{ color: "white" }} />
             </a>
-            <a href="muhammednihas2218@gmail.com">
+            <a href="mailto:muhammednihas2218@gmail.com">
               <i className="fas fa-envelope"></i>
             </a>
           </div>
