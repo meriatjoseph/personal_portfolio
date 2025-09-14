@@ -55,7 +55,7 @@ const Contact = () => {
         console.log('Email sent successfully:', result);
         setSubmitStatus({ 
           type: 'success', 
-          message: 'Message sent successfully! I will get back to you soon.' 
+          message: 'Thank you for your message! It has been successfully sent and I will get back to you shortly.' 
         });
       })
       .catch((error) => {
@@ -154,7 +154,8 @@ const Contact = () => {
               
               {submitStatus && (
                 <div className={`form-status ${submitStatus.type}`}>
-                  {submitStatus.message}
+                  <i className={`fas ${submitStatus.type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}`}></i>
+                  <div>{submitStatus.message}</div>
                 </div>
               )}
               
