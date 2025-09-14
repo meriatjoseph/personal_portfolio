@@ -99,6 +99,17 @@
   align-items: center;
 }
 
+.education-institution a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.education-institution a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
 .education-institution::before {
   content: '';
   display: inline-block;
@@ -109,59 +120,70 @@
   margin-right: 10px;
 }
 
-.education-field {
+.education-university {
   color: var(--text-dark);
   font-weight: 600;
   margin-bottom: 15px;
   font-size: 1.1rem;
 }
 
+.education-university a {
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.education-university a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
 .education-gpa {
   color: var(--text-light);
   font-weight: 600;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   font-size: 1.05rem;
 }
 
-.education-achievements h4 {
+.education-project {
+  color: var(--dark-color);
+  font-weight: 600;
+  margin-bottom: 25px;
+  font-size: 1.05rem;
+  padding: 10px 15px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(14, 165, 233, 0.05));
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(6, 182, 212, 0.1);
+}
+
+.education-subjects h4 {
   color: var(--dark-color);
   margin-bottom: 15px;
   font-size: 1.2rem;
   font-weight: 700;
 }
 
-.education-achievements ul {
-  padding-left: 0;
-  margin: 0;
+.subjects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.education-achievements li {
-  margin-bottom: 15px;
-  color: var(--text-dark);
-  line-height: 1.7;
-  font-size: 1.05rem;
-  position: relative;
-  padding-left: 30px;
+.subject-tag {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(14, 165, 233, 0.15));
+  color: var(--primary-dark);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
   transition: all 0.3s ease;
+  border: 1px solid rgba(6, 182, 212, 0.2);
 }
 
-.education-achievements li:hover {
-  color: var(--dark-color);
-  transform: translateX(5px);
-}
-
-.education-achievements li::before {
-  content: '✓';
-  color: var(--secondary-color);
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.education-achievements li:last-child {
-  margin-bottom: 0;
+.subject-tag:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(6, 182, 212, 0.2);
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(14, 165, 233, 0.25));
 }
 
 /* Responsive Design */
@@ -172,10 +194,6 @@
   
   .education-institution {
     font-size: 1.1rem;
-  }
-  
-  .education-achievements li {
-    font-size: 1rem;
   }
 }
 
@@ -205,11 +223,6 @@
   .education-institution {
     font-size: 1.05rem;
   }
-  
-  .education-achievements li {
-    padding-left: 25px;
-    font-size: 0.95rem;
-  }
 }
 
 @media (max-width: 576px) {
@@ -230,8 +243,81 @@
     padding: 6px 12px;
   }
   
-  .education-achievements li {
-    padding-left: 22px;
-    font-size: 0.9rem;
+  .education-subjects h4 {
+    font-size: 1.1rem;
   }
+  
+  .subject-tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+}
+
+/* Certificate Styles */
+.education-certificate {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.certificate-button {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+}
+
+.certificate-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(6, 182, 212, 0.4);
+}
+
+.certificate-button:active {
+  transform: translateY(-1px);
+}
+
+.certificate-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.certificate-modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.close-button {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #ccc;
+}
+
+.certificate-image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }

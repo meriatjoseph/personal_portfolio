@@ -1,32 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Education.css';
 
 const Education = () => {
+  const [showCertificate, setShowCertificate] = useState(false);
+  
   const educationData = [
     {
       id: 1,
-      institution: "University Name",
-      degree: "Master of Science in Computer Science",
-      field: "Artificial Intelligence",
-      period: "2023 - 2025",
-      gpa: "3.8/4.0",
-      achievements: [
-        "Dean's List for Academic Excellence (2023-2024)",
-        "Research Assistant in Machine Learning Lab",
-        "Thesis: 'Advancements in Natural Language Processing'"
-      ]
-    },
-    {
-      id: 2,
-      institution: "College Name",
-      degree: "Bachelor of Technology",
-      field: "Computer Engineering",
-      period: "2019 - 2023",
-      gpa: "3.7/4.0",
-      achievements: [
-        "Graduated with Honors",
-        "President of Computer Science Club",
-        "Capstone Project: 'Smart Home Automation System'"
+      university: "Kannur University",
+      universityLink: "https://kannur.kreap.co.in",
+      institution: "NAM College Kallikandy",
+      institutionLink: "http://namcollege.ac.in",
+      degree: "BSc Computer Science",
+      period: "2020 - 2023",
+      gpa: "7.82 CGPA",
+      project: "FitMe",
+      subjects: [
+        "Mathematics",
+        "Statistics",
+        "Programming",
+        "Data Structures & Algorithms",
+        "Software Engineering",
+        "Networking",
+        "Database Management Systems (DBMS)"
       ]
     }
   ];
@@ -44,22 +40,52 @@ const Education = () => {
                 <h3 className="education-degree">{edu.degree}</h3>
                 <span className="education-period">{edu.period}</span>
               </div>
-              <div className="education-institution">{edu.institution}</div>
-              <div className="education-field">{edu.field}</div>
-              <div className="education-gpa">GPA: {edu.gpa}</div>
-              {edu.achievements && edu.achievements.length > 0 && (
-                <div className="education-achievements">
-                  <h4>Achievements & Activities:</h4>
-                  <ul>
-                    {edu.achievements.map((achievement, idx) => (
-                      <li key={idx}>{achievement}</li>
-                    ))}
-                  </ul>
+              <div className="education-institution">
+                <a href={edu.institutionLink} target="_blank" rel="noopener noreferrer">
+                  {edu.institution}
+                </a>
+              </div>
+              <div className="education-university">
+                <a href={edu.universityLink} target="_blank" rel="noopener noreferrer">
+                  {edu.university}
+                </a>
+              </div>
+              <div className="education-gpa">CGPA: {edu.gpa}</div>
+              <div className="education-project">Major Project: {edu.project}</div>
+              
+              <div className="education-certificate">
+                <button 
+                  className="certificate-button"
+                  onClick={() => setShowCertificate(true)}
+                >
+                  View Degree Certificate
+                </button>
+              </div>
+              
+              <div className="education-subjects">
+                <h4>Key Subjects:</h4>
+                <div className="subjects-grid">
+                  {edu.subjects.map((subject, index) => (
+                    <span key={index} className="subject-tag">{subject}</span>
+                  ))}
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>
+        
+        {showCertificate && (
+          <div className="certificate-modal" onClick={() => setShowCertificate(false)}>
+            <div className="certificate-modal-content" onClick={(e) => e.stopPropagation()}>
+              <span className="close-button" onClick={() => setShowCertificate(false)}>&times;</span>
+              <img 
+                src="/muhammed-nihas-degree-certificate.jpg" 
+                alt="Degree Certificate" 
+                className="certificate-image"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
