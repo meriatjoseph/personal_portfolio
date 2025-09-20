@@ -44,6 +44,7 @@
   transform: translateZ(0) rotateY(0);
   opacity: 1;
   z-index: 10;
+  cursor: pointer; /* Indicate clickability */
 }
 
 .project-card.prev {
@@ -138,6 +139,212 @@
 .project-links { display: flex; gap: 20px; flex-wrap: wrap; margin-top: auto; }
 .project-link { padding: 12px 24px; }
 
+.project-details-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--secondary-color);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  gap: 5px;
+  padding: 10px 20px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.project-details-link:hover {
+  color: white;
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  border-color: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
+}
+
+.project-details-link i {
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.project-details-link:hover i {
+  transform: translateX(2px);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  position: relative;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  animation: slide-up 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}
+
+.modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-body {
+  padding: 35px 40px;
+}
+
+.modal-title {
+  color: var(--dark-color);
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.modal-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.modal-tech-stack .tech-item {
+  background-color: #eef2f7;
+  color: var(--secondary-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid #e0e6ed;
+  transition: all 0.3s ease;
+}
+
+.modal-tech-stack .tech-item:hover {
+  background-color: var(--secondary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(6, 182, 212, 0.2);
+}
+
+.modal-description {
+  color: var(--text-dark);
+  line-height: 1.9;
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+}
+
+.modal-description strong {
+  font-weight: 700;
+  color: #333;
+}
+
+.modal-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.modal-links .project-link {
+  padding: 12px 28px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.modal-links .project-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 300;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1001;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(5px);
+}
+
+.close-button:hover {
+  background: white;
+  color: var(--primary-color);
+  transform: rotate(90deg);
+}
+
+.close-button:hover {
+  background: var(--secondary-color);
+  transform: rotate(90deg);
+}
+
+/* Responsive Design for Modal */
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 95%;
+    max-height: 95vh;
+  }
+  .modal-header { height: 200px; }
+  .modal-body { padding: 20px; }
+  .modal-title { font-size: 1.8rem; }
+  .modal-description { font-size: 1rem; }
+  .modal-links { flex-direction: column; gap: 10px; }
+}
+
+@media (max-width: 576px) {
+  .modal-header { height: 150px; }
+  .modal-title { font-size: 1.5rem; }
+  .modal-body { padding: 15px; }
+}
+
+/* Responsive adjustments for the new 3D layout */
 @media (max-width: 992px) {
   .project-card { width: 50%; }
   .project-card.prev { transform: translateX(-55%) translateZ(-250px) rotateY(45deg); }
