@@ -118,9 +118,21 @@
   border-radius: 8px;
   width: fit-content;
   border: 1px solid rgba(6, 182, 212, 0.1);
+  transition: all 0.3s ease;
 }
 
-.experience-company::before {
+.experience-company:hover {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(14, 165, 233, 0.1));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.experience-company a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.experience-company a::before {
   content: '';
   display: inline-block;
   width: 8px;

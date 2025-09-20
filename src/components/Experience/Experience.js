@@ -7,6 +7,7 @@ const Experience = () => {
       id: 1,
       title: "AI Engineer",
       company: "NxtGen Cloud Technologies",
+      companyLink: "https://nxtgen.com",
       period: "Apr 2025 – Present",
       responsibilities: [
         "Built and optimized a Retrieval-Augmented Generation (RAG) chatbot using LLaMA 3 on the Mattermost platform to support company-wide communication. Improved response speed significantly by identifying and resolving inference bottlenecks.",
@@ -30,7 +31,11 @@ const Experience = () => {
                 <h3 className="experience-title">{exp.title}</h3>
                 <span className="experience-date">{exp.period}</span>
               </div>
-              <div className="experience-company">{exp.company}</div>
+                            <div className="experience-company">
+                <a href={exp.companyLink} target="_blank" rel="noopener noreferrer">
+                  {exp.company}
+                </a>
+              </div>
               <ul className="experience-details">
                 {exp.responsibilities.map((responsibility, idx) => (
                   <li key={idx} className="experience-item">{responsibility}</li>
