@@ -251,79 +251,77 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Modal Styles */
+/* --- New Modal System --- */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   padding: 20px;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  animation: modal-fade-in 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
 }
 
-.modal-content {
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content-wrapper {
   position: relative;
+  cursor: default;
+}
+
+/* --- Image Modal --- */
+.modal-image-content {
+  animation: modal-scale-up 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.modal-image-content img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: var(--border-radius);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* --- Text Content Modal --- */
+.modal-text-content {
   background: white;
   border-radius: var(--border-radius);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  max-width: 900px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 700px;
+  width: 90vw;
   max-height: 90vh;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  animation: slide-up 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 40px 45px;
+  animation: modal-slide-up 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-@keyframes slide-up {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.modal-header {
-  width: 100%;
-  height: 280px;
-  overflow: hidden;
-  border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
-}
-
-.modal-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.modal-body {
-  padding: 35px 40px;
-}
-
-.modal-title {
+/* Re-scoping old modal styles for the new text modal */
+.modal-text-content .modal-title {
   color: var(--dark-color);
   margin-bottom: 20px;
   font-size: 2.2rem;
   font-weight: 700;
 }
 
-.modal-tech-stack {
+.modal-text-content .modal-tech-stack {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 25px;
 }
 
-.modal-tech-stack .tech-item {
+.modal-text-content .modal-tech-stack .tech-item {
   background-color: #eef2f7;
   color: var(--secondary-color);
   padding: 8px 16px;
@@ -334,49 +332,50 @@
   transition: all 0.3s ease;
 }
 
-.modal-tech-stack .tech-item:hover {
+.modal-text-content .modal-tech-stack .tech-item:hover {
   background-color: var(--secondary-color);
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(6, 182, 212, 0.2);
 }
 
-.modal-description {
+.modal-text-content .modal-description {
   color: var(--text-dark);
   line-height: 1.9;
   font-size: 1.05rem;
   margin-bottom: 30px;
 }
 
-.modal-description strong {
+.modal-text-content .modal-description strong {
   font-weight: 700;
   color: #333;
 }
 
-.modal-links {
+.modal-text-content .modal-links {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   margin-top: 10px;
 }
 
-.modal-links .project-link {
+.modal-text-content .modal-links .project-link {
   padding: 12px 28px;
   font-weight: 600;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
-.modal-links .project-link:hover {
+.modal-text-content .modal-links .project-link:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* --- Universal Modal Components --- */
 .close-button {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(255, 255, 255, 0.8);
+  top: -18px;
+  right: -18px;
+  background: white;
   color: #333;
   width: 40px;
   height: 40px;
@@ -385,24 +384,29 @@
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
-  font-weight: 300;
+  font-weight: 400;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   z-index: 1001;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(5px);
+  border: 2px solid white;
 }
 
 .close-button:hover {
-  background: white;
-  color: var(--primary-color);
-  transform: rotate(90deg);
+  background: var(--primary-color);
+  color: white;
+  transform: rotate(90deg) scale(1.1);
 }
 
-.close-button:hover {
-  background: var(--secondary-color);
-  transform: rotate(90deg);
+/* Keyframes for animations */
+@keyframes modal-scale-up {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes modal-slide-up {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 /* --- Responsive Design --- */

@@ -43,6 +43,7 @@ const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [modalView, setModalView] = useState(null); // 'image' or 'content'
   const dataLength = projects.length;
 
   const goToPrev = useCallback(() => {
@@ -78,13 +79,15 @@ const Projects = () => {
     return 'inactive';
   };
 
-  const handleCardClick = (project) => {
+  const openModal = (project, viewType) => {
     setSelectedProject(project);
+    setModalView(viewType);
     setIsAutoPlaying(false);
   };
 
   const closeModal = () => {
     setSelectedProject(null);
+    setModalView(null);
     setIsAutoPlaying(true);
   };
 
@@ -104,16 +107,21 @@ const Projects = () => {
               <div
                 className={`project-card ${getCardClassName(index)}`}
                 key={project.id}
-                onClick={() => getCardClassName(index) === 'active' && handleCardClick(project)}
               >
-                <div className="project-img">
+                <div 
+                  className="project-img"
+                  onClick={() => getCardClassName(index) === 'active' && openModal(project, 'image')}
+                >
                   {project.image ? (
                     <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   ) : (
                     'AI Project Image'
                   )}
                 </div>
-                <div className="project-content">
+                <div 
+                  className="project-content"
+                  onClick={() => getCardClassName(index) === 'active' && openModal(project, 'content')}
+                >
                   <h3>{project.title}</h3>
                   <p className="project-description" dangerouslySetInnerHTML={{ __html: project.description }}></p>
                   <div className="tech-stack">
@@ -141,26 +149,32 @@ const Projects = () => {
         </div>
       </div>
 
-      {selectedProject && (
+      {selectedProject && modalView && (
         <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header">
-              <img src={selectedProject.image} alt={selectedProject.title} className="modal-img" />
-            </div>
-            <div className="modal-body">
-              <h3 className="modal-title">{selectedProject.title}</h3>
-              <div className="modal-tech-stack">
-                {selectedProject.technologies.map((tech, i) => (
-                  <span className="tech-item" key={i}>{tech}</span>
-                ))}
-              </div>
-              <p className="modal-description" dangerouslySetInnerHTML={{ __html: selectedProject.description }}></p>
-              <div className="modal-links">
-                <a href={selectedProject.demoLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fas fa-external-link-alt"></i> Live Demo</a>
-                <a href={selectedProject.sourceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i> Source Code</a>
-              </div>
-            </div>
+          <div className="modal-content-wrapper" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={closeModal}>&times;</button>
+            
+            {modalView === 'image' && (
+              <div className="modal-image-content">
+                <img src={selectedProject.image} alt={selectedProject.title} />
+              </div>
+            )}
+
+            {modalView === 'content' && (
+              <div className="modal-text-content">
+                <h3 className="modal-title">{selectedProject.title}</h3>
+                <div className="modal-tech-stack">
+                  {selectedProject.technologies.map((tech, i) => (
+                    <span className="tech-item" key={i}>{tech}</span>
+                  ))}
+                </div>
+                <p className="modal-description" dangerouslySetInnerHTML={{ __html: selectedProject.description }}></p>
+                <div className="modal-links">
+                  <a href={selectedProject.demoLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fas fa-external-link-alt"></i> Live Demo</a>
+                  <a href={selectedProject.sourceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i> Source Code</a>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
