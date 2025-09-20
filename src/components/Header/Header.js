@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
 
-const Header = ({ onNavigate }) => {
+const navLinks = [
+  { id: 'about', title: 'About' },
+  { id: 'experience', title: 'Experience' },
+  { id: 'skills', title: 'Skills' },
+  { id: 'education', title: 'Education' },
+  { id: 'certifications', title: 'Certifications' },
+  { id: 'achievements', title: 'Achievements' },
+  { id: 'projects', title: 'Projects' },
+  { id: 'contact', title: 'Contact' },
+];
+
+const Header = ({ onNavigate, activeSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -27,34 +38,26 @@ const Header = ({ onNavigate }) => {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
-        <a href="#home" className="nav-logo" onClick={(e) => handleNavigationClick('home', e)}>Muhammed Nihas</a>
+        <a 
+          href="#home" 
+          className={`nav-logo ${activeSection === 'home' ? 'active' : ''}`}
+          onClick={(e) => handleNavigationClick('home', e)}
+        >
+          Muhammed Nihas
+        </a>
         
         <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <li className="nav-item">
-            <a href="#about" className="nav-link" onClick={(e) => handleNavigationClick('about', e)}>About</a>
-          </li>
-          <li className="nav-item">
-            <a href="#experience" className="nav-link" onClick={(e) => handleNavigationClick('experience', e)}>Experience</a>
-          </li>
-          <li className="nav-item">
-            <a href="#skills" className="nav-link" onClick={(e) => handleNavigationClick('skills', e)}>Skills</a>
-          </li>
-          <li className="nav-item">
-            <a href="#education" className="nav-link" onClick={(e) => handleNavigationClick('education', e)}>Education</a>
-          </li>
-          <li className="nav-item">
-            <a href="#certifications" className="nav-link" onClick={(e) => handleNavigationClick('certifications', e)}>Certifications</a>
-          </li>
-          <li className="nav-item">
-            <a href="#achievements" className="nav-link" onClick={(e) => handleNavigationClick('achievements', e)}>Achievements</a>
-          </li>
-          <li className="nav-item">
-            <a href="#projects" className="nav-link" onClick={(e) => handleNavigationClick('projects', e)}>Projects</a>
-          </li>
-          
-          <li className="nav-item">
-            <a href="#contact" className="nav-link" onClick={(e) => handleNavigationClick('contact', e)}>Contact</a>
-          </li>
+          {navLinks.map(link => (
+            <li className="nav-item" key={link.id}>
+              <a 
+                href={`#${link.id}`} 
+                className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
+                onClick={(e) => handleNavigationClick(link.id, e)}
+              >
+                {link.title}
+              </a>
+            </li>
+          ))}
         </ul>
         
         <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMobileMenu}>

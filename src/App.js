@@ -14,13 +14,33 @@ import Footer from './components/Footer/Footer';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
+    const sections = document.querySelectorAll('section[id]');
+    
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 50);
+
+      let currentSectionId = 'home';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150; // Adjust offset for navbar height
+        if (scrollY >= sectionTop) {
+          currentSectionId = section.id;
+        }
+      });
+
+      // A special check for the contact section at the very bottom
+      const contactSection = document.getElementById('contact');
+      if (contactSection && (window.innerHeight + scrollY) >= document.body.offsetHeight - 100) {
+        currentSectionId = 'contact';
+      }
+
+      setActiveSection(currentSectionId);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -37,7 +57,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header onNavigate={handleScrollToSection} />
+      <Header onNavigate={handleScrollToSection} activeSection={activeSection} />
       <Hero onScrollToProjects={handleViewProjects} />
       <About />
       <Experience />

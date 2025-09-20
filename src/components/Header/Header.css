@@ -80,8 +80,12 @@
   border-radius: 10px;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after, .nav-link.active::after {
   width: 100%;
+}
+
+.nav-link.active {
+  color: #06B6D4;
 }
 
 .nav-link:focus {
