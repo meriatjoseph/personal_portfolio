@@ -405,7 +405,9 @@
   transform: rotate(90deg);
 }
 
-/* Responsive Design for Modal */
+/* --- Responsive Design --- */
+
+/* Modal Responsiveness */
 @media (max-width: 768px) {
   .modal-content {
     max-width: 95%;
@@ -424,23 +426,110 @@
   .modal-body { padding: 15px; }
 }
 
-/* Responsive adjustments for the new 3D layout */
+/* Carousel Responsiveness */
+
+/* Tablet */
 @media (max-width: 992px) {
-  .project-card { width: 50%; }
-  .project-card.prev { transform: translateX(-55%) translateZ(-250px) rotateY(45deg); }
-  .project-card.next { transform: translateX(55%) translateZ(-250px) rotateY(-45deg); }
+  .project-card {
+    width: 45%;
+  }
+  .project-card.prev {
+    transform: translateX(-60%) translateZ(-250px) rotateY(45deg);
+  }
+  .project-card.next {
+    transform: translateX(60%) translateZ(-250px) rotateY(-45deg);
+  }
 }
 
+/* Mobile - Switch to a flat slider */
 @media (max-width: 768px) {
-  .carousel-container-projects { height: 550px; }
-  .project-card { width: 65%; }
-  .carousel-btn.prev-btn { left: -10px; }
-  .carousel-btn.next-btn { right: -10px; }
+  .projects-section {
+    padding: 80px 0;
+  }
+
+  .carousel-container-projects {
+    height: 580px;
+    perspective: none;
+  }
+
+  .carousel-wrapper-projects {
+    transform-style: flat;
+  }
+
+  .project-card {
+    width: 85%;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+
+  .project-card.active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .project-card.prev,
+  .project-card.prev-2 {
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .project-card.next,
+  .project-card.next-2 {
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .project-card.inactive {
+      opacity: 0;
+      transform: scale(0.9);
+  }
+
+  .carousel-btn {
+    width: 45px;
+    height: 45px;
+  }
+  .carousel-btn.prev-btn {
+    left: -10px;
+  }
+  .carousel-btn.next-btn {
+    right: -10px;
+  }
+  
+  .project-content h3 {
+      font-size: 1.3rem;
+  }
+  
+  .project-content p {
+      font-size: 0.85rem;
+  }
+  
+  .tech-item {
+      font-size: 0.7rem;
+      padding: 4px 10px;
+  }
+  
+  .project-link {
+      font-size: 0.75rem;
+      padding: 8px 14px;
+  }
 }
 
+/* Smaller Mobile */
 @media (max-width: 576px) {
-  .carousel-container-projects { height: 520px; }
-  .project-card { width: 85%; }
-  .project-card.prev { transform: translateX(-40%) translateZ(-150px) rotateY(25deg); }
-  .project-card.next { transform: translateX(40%) translateZ(-150px) rotateY(-25deg); }
+    .carousel-container-projects {
+        height: 550px;
+    }
+    .project-card {
+        width: 90%;
+    }
+    .carousel-btn {
+        transform: translateY(-50%) scale(0.9);
+    }
+    .carousel-btn.prev-btn {
+        left: 5px;
+    }
+    .carousel-btn.next-btn {
+        right: 5px;
+    }
 }
