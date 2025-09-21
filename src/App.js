@@ -11,6 +11,8 @@ import Achievements from './components/Achievements/Achievements';
 import Projects from './components/Projects/Projects';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import Starfield from './components/Starfield/Starfield';
+import CustomCursor from './components/CustomCursor/CustomCursor';
 
 // Component to handle fade-in animation
 const AnimatedSection = ({ children }) => {
@@ -108,6 +110,8 @@ function App() {
 
   return (
     <div className="App">
+      <CustomCursor />
+      <Starfield />
       <Header onNavigate={handleScrollToSection} activeSection={activeSection} />
       <Hero onScrollToProjects={handleViewProjects} />
       <AnimatedSection><About /></AnimatedSection>
