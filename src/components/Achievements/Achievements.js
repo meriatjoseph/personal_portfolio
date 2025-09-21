@@ -5,6 +5,10 @@ const Achievements = () => {
   const [modalImage, setModalImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 50;
 
   const achievementsData = [
     {
@@ -80,6 +84,30 @@ const Achievements = () => {
     if (e.key === 'ArrowRight') goToNext();
   }, [goToPrev, goToNext]);
 
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      goToNext();
+    }
+    if (isRightSwipe) {
+      goToPrev();
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   useEffect(() => {
     let interval;
     if (isAutoPlaying) {
@@ -129,6 +157,9 @@ const Achievements = () => {
             className="carousel-wrapper"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             {achievementsData.map((achievement, index) => (
               <div className={`achievement-card ${getCardClassName(index)}`} key={achievement.id}>
@@ -173,4 +204,3 @@ const Achievements = () => {
 };
 
 export default Achievements;
-
