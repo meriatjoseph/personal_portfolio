@@ -1,4 +1,4 @@
 /* App Styles */
 .App {
-  text-align: center;
+  /* text-align: center; was here, but it's better to let components control their own alignment. */
 }

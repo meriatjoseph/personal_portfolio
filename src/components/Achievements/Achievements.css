@@ -1,7 +1,8 @@
 .achievements-section {
   padding: 120px 0;
-  background: linear-gradient(135deg, #fafafa 0%, #f1f5f9 100%);
+  background-color: var(--bg-dark);
   overflow: hidden; /* To contain the 3D elements */
+  border-bottom: 1px solid var(--border-color);
 }
 
 .carousel-container {
@@ -29,11 +30,11 @@
   width: 45%; /* Adjust width of the cards */
   height: 100%;
   transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.6s ease, z-index 0s 0.3s;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--bg-light);
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
   padding: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border-color);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -79,8 +80,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -88,10 +89,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   z-index: 20; /* Ensure buttons are on top */
-  color: var(--dark-color);
+  color: var(--text-primary);
   font-size: 1.2rem;
 }
 
@@ -99,6 +100,7 @@
   background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
   color: white;
   transform: translateY(-50%) scale(1.1);
+  border-color: var(--secondary-color);
 }
 
 .prev-btn { left: 0; }
@@ -108,12 +110,12 @@
   text-align: center;
   margin-top: 25px;
   font-size: 1.1rem;
-  color: var(--text-light);
+  color: var(--text-muted);
   font-weight: 600;
 }
 
 .carousel-pagination .current-page {
-  color: var(--dark-color);
+  color: var(--text-primary);
   font-size: 1.2rem;
 }
 
@@ -146,19 +148,20 @@
 .platform-icon.github { background: linear-gradient(135deg, #333333, #444444); }
 
 .achievement-title {
-  color: var(--dark-color);
+  color: var(--text-primary);
   margin: 0;
   font-size: 1.4rem;
   font-weight: 800;
 }
 
 .achievement-year {
-  color: var(--text-light);
+  color: var(--text-secondary);
   font-weight: 600;
   font-size: 0.95rem;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(14, 165, 233, 0.1));
+  background: var(--bg-dark);
   padding: 6px 14px;
   border-radius: 50px;
+  border: 1px solid var(--border-color);
 }
 
 .achievement-platform {
@@ -176,6 +179,8 @@
   transition: all 0.3s ease;
   padding: 15px;
   height: 200px;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-color);
 }
 
 .badge-preview img {
@@ -195,6 +200,12 @@
   padding: 10px 20px;
   border: 2px solid var(--secondary-color);
   border-radius: 50px;
+  transition: var(--transition);
+}
+
+.verify-link:hover {
+    background-color: var(--secondary-color);
+    color: white;
 }
 
 /* --- Achievement Modal --- */
@@ -204,7 +215,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(24, 31, 41, 0.85);
+  background: rgba(15, 23, 42, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -216,13 +227,14 @@
 
 .modal-content {
   position: relative;
-  background: #fff;
+  background: var(--bg-light);
   border-radius: var(--border-radius);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
   animation: scaleUp 0.3s ease-out;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid var(--border-color);
 }
 
 .modal-content img {
