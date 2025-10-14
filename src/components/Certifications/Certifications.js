@@ -5,35 +5,43 @@ const Certifications = () => {
   const certificationsData = [
     {
       id: 1,
-      title: "Data Science & AI",
-      issuer: "Brototype",
-      date: "2023-2025",
-      verificationLink: "https://brocamp.brototype.com/portfolio?id=365dc898-7541-43df-a41c-2fafb54b9529",
-      skills: ["Machine Learning", "Deep Learning", "Python", "Generative AI", "Data Analysis", "Projects", "DBMS"]
+      title: "Cognizant - Artificial Intelligence Job Simulation",
+      issuer: "Forage",
+      date: "July 2024",
+      verificationLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Cognizant/5N2ygyhzMWjKQmgCK_Cognizant_kFgcdmsDKQZikXgiP_1719895946606_completion_certificate.pdf",
+      skills: [] // Not provided
     },
     {
       id: 2,
-      title: "Pandas",
-      issuer: "Kaggle",
-      date: "Completed 2024",
-      verificationLink: "https://www.kaggle.com/learn/certification/muhammednihas/pandas",
-      skills: ["Indexing", "Summary Functions and Mapping", "Grouping and Sorting", "Data Manipulation"]
+      title: "Neo4j Fundamentals",
+      issuer: "Neo4j",
+      date: "September 2025",
+      verificationLink: "https://graphacademy.neo4j.com/c/dd313d25-7b38-41e5-86fe-abb9dfc06edf/",
+      skills: ["graph database (neo4j)"]
     },
     {
       id: 3,
-      title: "MLops",
-      issuer: "Udemy",
-      date: "Completed 2025",
-      verificationLink: "#",
-      skills: ["mlflow", "flask", "CI/CD", "Github Action"]
+      title: "Programming for Everybody (Getting Started with Python)",
+      issuer: "University of Michigan",
+      date: "January 2024",
+      verificationLink: "https://coursera.org/verify/VNYABU778RVZ",
+      skills: ["python"]
     },
     {
       id: 4,
-      title: "Building RAG Agents with LLMs",
-      issuer: "NVIDIA",
-      date: "2025",
-      verificationLink: "#",
-      skills: ["Langchain", "vector storage", "embeddings"]
+      title: "What is Data Science?",
+      issuer: "IBM",
+      date: "January 2024",
+      verificationLink: "https://coursera.org/verify/D2SDMF22FK9T",
+      skills: [] // Not provided
+    },
+    {
+      id: 5,
+      title: "BCG - Data Science Job Simulation",
+      issuer: "Forage",
+      date: "May 2024",
+      verificationLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/BCG%20/Tcz8gTtprzAS4xSoK_BCG_kFgcdmsDKQZikXgiP_1715750944925_completion_certificate.pdf",
+      skills: [] // Not provided
     }
   ];
 

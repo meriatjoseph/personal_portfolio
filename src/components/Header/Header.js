@@ -43,7 +43,7 @@ const Header = ({ onNavigate, activeSection }) => {
           className={`nav-logo ${activeSection === 'home' ? 'active' : ''}`}
           onClick={(e) => handleNavigationClick('home', e)}
         >
-          Muhammed Nihas
+          Meriat Joseph
         </a>
         
         <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>

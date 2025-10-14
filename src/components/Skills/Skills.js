@@ -13,7 +13,7 @@ const Skills = () => {
       id: 2,
       title: "AI/ML Specializations",
       icon: "fas fa-brain",
-      skills: ["Machine Learning", "Deep Learning", "Generative AI", "LLMs", "RAG", "Transformers", "Fine-tuning", "Time Series Forecasting", "VLMs", "AI Agents", "ASR"]
+      skills: ["Machine Learning", "Deep Learning", "Generative AI", "LLMs", "RAG", "Transformers", "Fine-tuning", "Time Series Forecasting", "VLMs", "AI Agents", "ASR", "Stable Diffusion", "Knowledge Graph (Neo4j)"]
     },
     {
       id: 3,
@@ -25,19 +25,19 @@ const Skills = () => {
       id: 4,
       title: "Data Analysis & Visualization",
       icon: "fas fa-chart-bar",
-      skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Tableau", "Power BI", "Looker Studio"]
+      skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Tableau", "Power BI"]
     },
     {
       id: 5,
       title: "Web Development",
       icon: "fas fa-laptop-code",
-      skills: ["HTML/CSS", "FastAPI", "Django", "Flask", "Streamlit", "REST APIs"]
+      skills: ["HTML/CSS", "FastAPI", "Django", "Flask", "Streamlit"]
     },
     {
       id: 6,
       title: "Cloud & MLOps",
       icon: "fas fa-cloud",
-      skills: ["Google Cloud Platform (GCP)", "Docker", "Git", "MLflow", "Evidently"]
+      skills: ["Google Cloud Platform (GCP)", "Docker", "Git", "MLflow"]
     },
     {
       id: 7,

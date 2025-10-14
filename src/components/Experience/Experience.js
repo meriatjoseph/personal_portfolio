@@ -6,14 +6,12 @@ const Experience = () => {
     {
       id: 1,
       title: "AI Engineer",
-      company: "NxtGen Cloud Technologies",
+      company: "Nxtgen Cloud Technologies",
       companyLink: "https://nxtgen.com",
-      period: "Apr 2025 – Present",
+      period: "April 2025-Present",
       responsibilities: [
-        "Built and optimized a Retrieval-Augmented Generation (RAG) chatbot using LLaMA 3 on the Mattermost platform to support company-wide communication. Improved response speed significantly by identifying and resolving inference bottlenecks.",
-        "Designed a time series–based sales forecasting system (ARIMA, Prophet) to improve demand prediction. Developed a computer vision–based defect detection pipeline with synthetic data generation (Stable Diffusion), which enhanced classification accuracy for product quality checks.",
-        "Contributed to the backend of a platform that automates resume screening and candidate interviews using VLMs and LLMs. Built multiple FastAPI endpoints, implemented robust edge-case handling, and resolved critical bugs, improving product stability and reliability.",
-        "Developed an AI-powered extension for VS Code that provides intelligent code suggestions, debugging support, and automated documentation. This tool helped reduce debugging time and improved development efficiency for engineering teams."
+        "At NxtGen, I’ve built and deployed end-to-end LLM-powered applications — from intelligent assistants and document search tools to personalized bots — and designed RAG pipelines using LangChain, OpenAI embeddings, and vector databases.",
+        "I’ve worked with graph databases like Neo4j to manage complex judicial data systems, and developed generative AI and computer vision solutions using Stable Diffusion, ControlNet, SAM-ViT-H, Vision-Language Models, OpenCV, and YOLOv5."
       ]
     }
   ];

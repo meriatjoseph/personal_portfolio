@@ -4,7 +4,7 @@ import './Hero.css';
 import profileImage from '../../profile.jpg';
 
 const Hero = ({ onScrollToProjects }) => {
-  const titles = useMemo(() => ['AI Engineer', 'Data Scientist', 'Software Engineer'], []);
+  const titles = useMemo(() => ['AI/ML Engineer'], []);
   const [currentTitle, setCurrentTitle] = useState('');
   const [titleIndex, setTitleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -47,26 +47,23 @@ const Hero = ({ onScrollToProjects }) => {
         <img src={profileImage} className="profile-image" alt="Profile" />
         <div className="profile-border"></div>
       </div>
-      <h1>Muhammed Nihas</h1>
+      <h1>Meriat Joseph</h1>
       <p className="job-title">{currentTitle}<span className="typing-cursor"></span></p>
       
       <div className="social-icons">
-        <a href="https://github.com/mhdnihas" target="_blank" rel="noopener noreferrer" className="social-icon">
+        <a href="https://github.com/meriatjoseph" target="_blank" rel="noopener noreferrer" className="social-icon">
           <i className="fab fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/muhammed-nihas-2a8a18260/" target="_blank" rel="noopener noreferrer" className="social-icon">
+        <a href="https://www.linkedin.com/in/meriat-joseph-1265b4281" target="_blank" rel="noopener noreferrer" className="social-icon">
           <i className="fab fa-linkedin-in"></i>
         </a>
-        <a href="https://x.com/MuhammedNi2218" target="_blank" rel="noopener noreferrer" className="social-icon">
-          <i className="fab fa-twitter"></i>
-        </a>
-        <a href="https://www.kaggle.com/muhammednihas" target="_blank" rel="noopener noreferrer" className="social-icon">
+        <a href="https://www.kaggle.com/meriat" target="_blank" rel="noopener noreferrer" className="social-icon">
           <i className="fab fa-kaggle"></i>
         </a>
-        <a href="https://leetcode.com/u/muhammednihas2218/" target="_blank" rel="noopener noreferrer" className="social-icon">
+        <a href="https://leetcode.com/u/Meriat/" target="_blank" rel="noopener noreferrer" className="social-icon">
           <SiLeetcode size={24} style={{ color: "white" }} />
         </a>
-        <a href="mailto:muhammednihas2218@gmail.com" className="social-icon">
+        <a href="mailto:meriatjoseph@gmail.com" className="social-icon">
           <i className="fas fa-envelope"></i>
         </a>
       </div>

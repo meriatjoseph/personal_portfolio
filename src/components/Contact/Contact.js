@@ -46,7 +46,7 @@ const Contact = () => {
       from_email: formData.email,
       subject: formData.subject,
       message: formData.message,
-      to_email: 'muhammednihas2218@gmail.com'
+      to_email: 'meriatjoseph@gmail.com'
     };
 
     // Send notification email to site owner
@@ -83,21 +83,21 @@ const Contact = () => {
               <i className="fas fa-map-marker-alt contact-icon"></i>
               <div className="contact-text">
                 <h4>Location</h4>
-                <p>Bengluru, Karnataka</p>
+                <p>Banglore</p>
               </div>
             </div>
             <div className="contact-detail">
               <i className="fas fa-envelope contact-icon"></i>
               <div className="contact-text">
                 <h4>Email</h4>
-                <a href="mailto:muhammednihas2218@gmail.com">muhammednihas2218@gmail.com</a>
+                <a href="mailto:meriatjoseph@gmail.com">meriatjoseph@gmail.com</a>
               </div>
             </div>
             <div className="contact-detail">
               <i className="fas fa-phone contact-icon"></i>
               <div className="contact-text">
                 <h4>Phone</h4>
-                <a href="tel:+918589932218">+91 8589932218</a>
+                <a href="tel:+917902800574">+91 7902800574</a>
               </div>
             </div>
           </div>
