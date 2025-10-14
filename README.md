@@ -150,7 +150,7 @@ You need to create two templates - one for notifications to yourself and one for
 2. Click "Create New Template"
 3. Customize your template:
    - Template Name: "Portfolio Contact Form Auto-Reply"
-   - Subject: `Thank you for contacting Muhammed Nihas`
+   - Subject: `Thank you for contacting Meriat Joseph`
    - Body:
      ```
      Hello {{from_name}},
@@ -166,7 +166,7 @@ You need to create two templates - one for notifications to yourself and one for
      I typically respond within 24-48 hours. If you need immediate assistance, feel free to call me at +91 8589932218.
      
      Best regards,
-     Muhammed Nihas
+     Meriat Joseph
      
      ---
      This is an automated response. Please do not reply to this email.
