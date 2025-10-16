@@ -10,7 +10,7 @@ const Achievements = () => {
       platform: "LeetCode",
       year: "2024",
       verificationLink: null,
-      image: "/leetcode-100-days-2024.gif"
+      image: "leetcode-100days-2024.png"
     },
     {
       id: 2,
